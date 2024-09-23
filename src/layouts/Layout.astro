@@ -1,0 +1,46 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import SEO from '../components/SEO.astro';
+
+interface Props {
+	title: string
+	description?: string
+	canonical?: string
+	image?: string
+}
+
+const { title, description, canonical, image } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<SEO title={title} description={description} canonical={canonical} image={image} />
+		<ViewTransitions/>
+	</head>
+	<body>
+		<Header/>
+		<slot />
+		<Footer/>
+	</body>
+</html>
+<style is:global>
+	:root {
+
+		background-color: black;
+		color:white
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+</style>
